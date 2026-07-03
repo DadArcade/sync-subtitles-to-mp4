@@ -58,7 +58,9 @@ Automatically syncs SRT subtitles to MP4 videos using AI audio transcription (`f
 ## Example
 <details>
   <summary>Expand example:</summary>
+
 ```bash
+
 ./run_sync.sh --video /videos/Notorious\ \(1946\).mp4 --srt /videos/Notorious\ \(1946\).eng.srt 
 [1/5] Analyzing structural timestamps in: /videos/Notorious (1946).eng.srt
 [2/5] Extracting audio stream from video...
@@ -75,5 +77,6 @@ MATCH SIMILARITY CONFIDENCE: 76.79%
 
 ✨ Sync completed successfully!
 👉 New adjusted subtitle generated at: /videos/Notorious (1946).eng_synced.srt
+
 ```
 </details>
