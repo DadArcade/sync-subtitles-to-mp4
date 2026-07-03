@@ -46,7 +46,23 @@ All arguments passed through `run_sync.sh` fall straight through to the underlyi
 **Basic Synchronization**
 Syncs the first audio track (index 0) of the target movie:
 ```bash
-./run_sync.sh --video /movies/inception.mp4 --srt /movies/inception.srt
+./run_sync.sh --video /videos/Notorious\ \(1946\).mp4 --srt /videos/Notorious\ \(1946\).eng.srt 
+
+[1/5] Analyzing structural timestamps in: /videos/Notorious (1946).eng.srt
+[2/5] Extracting audio stream from video...
+[3/5] Launching Whisper engine to isolate genuine spoken sentences...
+
+=================== FUZZY MATCH COMPARISON ===================
+AUDIO (Whisper) [90.00s]: "To be the reason why sin should not be pronounced."
+SUBTITLE (SRT)  [105.97s]: "Is there any legal reason why sentence should not be pronounced?"
+MATCH SIMILARITY CONFIDENCE: 76.79%
+=============================================================
+
+[4/5] Evaluating synchronization metrics... (Drift Delta: -15.97 seconds)
+[5/5] Subtitle drift exceeds 2 seconds threshold. Commencing shift pipeline...
+
+✨ Sync completed successfully!
+👉 New adjusted subtitle generated at: /videos/Notorious (1946).eng_synced.srt
 ```
 
 **Custom Audio Track**
