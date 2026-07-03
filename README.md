@@ -12,7 +12,9 @@ To run this tool, ensure the following core dependencies are available on your s
 
 ## How to Run
 
-The simplest way to execute the synchronization tool is by using the included `run_sync.sh` wrapper script. 
+First, ensure you have downloaded both `run_sync.sh` and `subtitle_sync.py` to the same directory on your machine.
+
+The simplest way to execute the synchronization tool is by using the included `run_sync.sh` wrapper script.
 
 When you run `run_sync.sh` for the first time, it automatically verifies your system dependencies, creates a Python virtual environment (`venv/`), installs `faster-whisper`, and passes your arguments directly to the main Python script.
 
