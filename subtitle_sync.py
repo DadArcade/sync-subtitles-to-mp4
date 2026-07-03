@@ -147,9 +147,6 @@ def main():
             raw_text = segment.text.strip()
             text_clean = raw_text.lower()
             words = [w for w in text_clean.split() if w not in [",", ".", "!", "?", "-"]]
-            
-            # The 15-second timeline gate has been removed.
-            # We now securely rely on the text-matching engine to validate candidate segments.
 
             # Reject known non-speech ambient description tags
             if text_clean in ["music", "[music]", "(music)", "applause", "laughter"]:
