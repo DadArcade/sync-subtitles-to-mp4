@@ -20,6 +20,8 @@ When you run `run_sync.sh` for the first time, it automatically verifies your sy
 ./run_sync.sh --video "path/to/movie.mp4" --srt "path/to/subtitles.srt"
 ```
 
+*Note: The script does not overwrite your original file. If a sync adjustment is necessary, it will generate a new synchronized file with the `_synced.srt` suffix in the same directory.*
+
 ### Cleanup
 
 If you want to remove the generated Python virtual environment and clean up your directory to save space:
