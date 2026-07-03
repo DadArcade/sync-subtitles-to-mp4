@@ -2,16 +2,6 @@
 
 This tool automatically detects and corrects out-of-sync SRT subtitle files for MP4 videos. Instead of manually guessing time offsets, this script uses `faster-whisper` for audio-transcription comparison to dynamically identify audio drift and shift your subtitles into perfect sync.
 
-## How It Works
-
-The script follows a 5-step pipeline to analyze and adjust subtitle timing:
-
-1. **Parse Subtitles**: It reads the opening structural timestamps and text contents from the provided SRT file.
-2. **Audio Extraction**: It isolates the designated audio channel from the provided MP4 video and exports a small temporary `.wav` file using FFmpeg.
-3. **Whisper Analysis**: It uses the `faster-whisper` AI engine (running deterministically on your CPU) to transcribe spoken phrases in the audio file, ignoring known non-speech ambient tags (like "music", "applause").
-4. **Fuzzy Text Matching**: It applies a sliding-window text similarity algorithm (fuzzy matching) to compare Whisper's transcription against the original SRT block text. Once a confident match is located, it locks onto the timestamps of both the audio and the SRT card.
-5. **Sync & Shift**: It evaluates the time drift difference between the spoken audio and the subtitle card. If the drift exceeds a 2-second threshold, it automatically uses FFmpeg to generate a new, fully synchronized `_synced.srt` copy of your file.
-
 ## Prerequisites
 
 To run this tool, ensure the following core dependencies are available on your system:
@@ -68,3 +58,13 @@ If the movie is in Spanish, but you are trying to sync English subtitles. Passin
 ```bash
 ./run_sync.sh --video /movies/pans_labyrinth.mp4 --srt /movies/pans_labyrinth.srt --translate
 ```
+
+## How It Works
+
+The script follows a 5-step pipeline to analyze and adjust subtitle timing:
+
+1. **Parse Subtitles**: It reads the opening structural timestamps and text contents from the provided SRT file.
+2. **Audio Extraction**: It isolates the designated audio channel from the provided MP4 video and exports a small temporary `.wav` file using FFmpeg.
+3. **Whisper Analysis**: It uses the `faster-whisper` AI engine (running deterministically on your CPU) to transcribe spoken phrases in the audio file, ignoring known non-speech ambient tags (like "music", "applause").
+4. **Fuzzy Text Matching**: It applies a sliding-window text similarity algorithm (fuzzy matching) to compare Whisper's transcription against the original SRT block text. Once a confident match is located, it locks onto the timestamps of both the audio and the SRT card.
+5. **Sync & Shift**: It evaluates the time drift difference between the spoken audio and the subtitle card. If the drift exceeds a 2-second threshold, it automatically uses FFmpeg to generate a new, fully synchronized `_synced.srt` copy of your file.
